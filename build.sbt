@@ -3,39 +3,21 @@ import sbt.Keys.scalaVersion
 
 
 lazy val root = (project in file(".")).
-  aggregate(streamConsumerService).
+  aggregate(sparkKafkaDetectionService).
   settings(
     inThisBuild(List(
       organization := "pl.com.itti",
       scalaVersion := "2.13.0",
       resolvers += "io.confluent" at "http://packages.confluent.io/maven/",
-      mainClass := Some("pl.com.itti.Main"),
-      libraryDependencies ++= Seq(
-        jacksonCore,
-        jacksonScala,
-        avro,
-        avroSerializer,
-
-        kafkaClient,
-        kafkaStreams,
-        kafkaStreamsScala,
-
-        spark,
-        sparkStreamingKafka,
-        sparkStreaming,
-        sparkSQL,
-        sparkSQLKafka,
-        configTypeSafe,
-        logs
-      )
+      mainClass := Some("pl.com.itti.Main")
     )),
-    name := "stream-consumer-service"
+    name := "spark-kafka-detection-service"
   )
 
 
-lazy val streamConsumerService = (project in file(".")).
+lazy val sparkKafkaDetectionService = (project in file(".")).
   settings(
-    name := "stream-consumer-service",
+    name := "spark-kafka-detection-service",
     resolvers += "confluent" at "http://packages.confluent.io/maven/",
     sourceGenerators in Compile += (avroScalaGenerateSpecific in Compile).taskValue,
     mainClass := Some("pl.com.itti.Main"),
