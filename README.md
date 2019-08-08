@@ -43,3 +43,8 @@ services:
       - SPARK_STREAM_DURATION=1
 ```
 
+# Learning Data
+
+Download sample dataset from https://www.stratosphereips.org/datasets-ctu13  in format "2format"
+
+
